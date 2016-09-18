@@ -3,6 +3,25 @@
 #include <capstone.h>
 #include <memory>
 
+// Support compilation under Clang and GCC.
+#if defined(__clang__) || defined(__GNUC__) || defined(__GNUG__)
+#ifndef __forceinline
+#define __forceinline __attribute__((always_inline))
+#endif
+
+#ifndef __in
+#define __in
+#endif
+
+#ifndef __inout
+#define __inout
+#endif
+
+#ifndef __checkReturn
+#define __checkReturn
+#endif
+#endif
+
 struct CS_HANDLE :
 	public std::shared_ptr<csh>
 {
